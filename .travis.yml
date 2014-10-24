@@ -3,17 +3,21 @@ compiler:
     - gcc
     - clang
 before_install:
-    # upgrade cmake; install dependencies; build boost:
+    # upgrade cmake:
     - sudo add-apt-repository --yes ppa:kalakris/cmake # workaround to use a newer cmake (2.8.11.2-1ubuntu2~precise1)
     - sudo apt-get update -qq
     - sudo apt-get install -y cmake 
+
+    # install dependencies:
     - sudo apt-get install -y libgmp3-dev libgmpxx4ldbl # GNU MP and its C++ bindings; needed by RevKit
     - sudo apt-get install -y gcc clang python # make sure that the compilers are updated
+
+    # build boost 1.56.0:
     - wget --trust-server-name http://sourceforge.net/projects/boost/files/boost/1.56.0/boost_1_56_0.tar.bz2/download # get boost
-    - tar --bzip2 -xf boost_1_56_0.tar.bz2 # start building boost
+    - tar --bzip2 -xf boost_1_56_0.tar.bz2 # extract boost
     - cd boost_1_56_0
-    - ./bootstrap.sh --with-python=PYTHON
-    - ./b2 stage threading=multi link=shared
+    - ./bootstrap.sh --with-python=PYTHON # 'PYTHON' is just a variable with value 'python'
+    - ./b2 -d0 stage threading=multi link=shared
     - sudo ./b2 install threading=multi link=shared
     - cd ..
 before_script:
