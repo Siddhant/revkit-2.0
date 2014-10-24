@@ -9,7 +9,7 @@ before_install:
     - sudo apt-get install -y cmake 
     - sudo apt-get install -y libgmp3-dev libgmpxx4ldbl # GNU MP and its C++ bindings; needed by RevKit
     - sudo apt-get install -y gcc clang python # make sure that the compilers are updated
-    - wget http://sourceforge.net/projects/boost/files/boost/1.56.0/boost_1_56_0.tar.bz2/download # get boost
+    - wget --trust-server-name http://sourceforge.net/projects/boost/files/boost/1.56.0/boost_1_56_0.tar.bz2/download # get boost
     - tar --bzip2 -xf boost_1_56_0.tar.bz2 # start building boost
     - cd boost_1_56_0
     - ./bootstrap.sh --with-python
