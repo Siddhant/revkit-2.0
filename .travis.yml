@@ -3,10 +3,12 @@ compiler:
     - gcc
     - clang
 before_install:
+    # upgrade gcc:
+    - sudo add-apt-repository --yes ppa:george-edison55/gcc4.7-precise
     # upgrade cmake:
     - sudo add-apt-repository --yes ppa:kalakris/cmake # workaround to use a newer cmake (2.8.11.2-1ubuntu2~precise1)
     - sudo apt-get update -qq
-    - sudo apt-get install -qqy cmake 
+    - sudo apt-get install -qqy cmake gcc-4.7
 
     # install dependencies:
     - sudo apt-get install -qqy libgmp3-dev libgmpxx4ldbl # GNU MP and its C++ bindings; needed by RevKit
