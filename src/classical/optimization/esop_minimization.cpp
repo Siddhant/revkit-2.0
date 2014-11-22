@@ -382,7 +382,7 @@ public:
     auto range = _cubes | indexed( 0u );
     for ( auto it = range.begin(); it != range.end(); ++it )
     {
-      std::cout << boost::format( "%4d: " ) % it.index() << *it << std::endl;
+      std::cout << boost::format( "%4d: " ) % it->index() << it->value() << std::endl;
     }
     std::cout << "Distance lists:" << std::endl;
     for ( unsigned i = 0u; i < 3u; ++i )
@@ -601,8 +601,8 @@ void generate_exact_psdkro( esop_manager& esop, DdManager * cudd, DdNode * f, ch
     auto range = boost::make_iterator_range( var_values, var_values + Cudd_ReadSize( cudd ) ) | indexed( 0u );
     for ( auto it = range.begin(); it != range.end(); ++it )
     {
-      lits.set( it.index(), *it == VariablePositive );
-      care.set( it.index(), *it != VariableAbsent );
+      lits.set( it->index(), it->value() == VariablePositive );
+      care.set( it->index(), it->value() != VariableAbsent );
     }
 
     esop.add_cube( std::make_pair( lits, care ) );
