@@ -27,6 +27,8 @@
 #ifndef RCBDD_HPP
 #define RCBDD_HPP
 
+#include <iostream>
+
 #include <boost/assign/std/vector.hpp>
 #include <boost/optional.hpp>
 
