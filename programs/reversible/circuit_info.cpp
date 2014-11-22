@@ -57,8 +57,9 @@ int main( int argc, char ** argv )
 
   if ( opts.is_set( "image" ) )
   {
-    create_tikz_settings settings;
-    create_image( std::cout, circ, settings );
+    //create_tikz_settings settings;
+    //create_image( std::cout, circ, settings );
+    std::cout << "'image' is not yet implemented" << std::endl;
   }
 
   return 0;
