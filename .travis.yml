@@ -7,17 +7,20 @@ before_install:
     - sudo add-apt-repository --yes ppa:george-edison55/gcc4.7-precise
     # upgrade cmake:
     - sudo add-apt-repository --yes ppa:kalakris/cmake # workaround to use a newer cmake (2.8.11.2-1ubuntu2~precise1)
+    
     - sudo apt-get update -qq
+    
+    # start installing stuff:
     - sudo apt-get install -qqy cmake gcc-4.7
 
     # install dependencies:
     - sudo apt-get install -qqy libgmp3-dev libgmpxx4ldbl # GNU MP and its C++ bindings; needed by RevKit
     - sudo apt-get install -qqy gcc clang python # make sure that the compilers are updated
 
-    # build boost 1.55.0:
-    - wget --trust-server-name http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.bz2/download # get boost
-    - tar --bzip2 -xf boost_1_55_0.tar.bz2 # extract boost
-    - cd boost_1_55_0
+    # build boost 1.57.0:
+    - wget --trust-server-name http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.tar.bz2/download # get boost
+    - tar --bzip2 -xf boost_1_57_0.tar.bz2 # extract boost
+    - cd boost_1_57_0
     - ./bootstrap.sh --with-python=PYTHON # 'PYTHON' is just a variable ((pre)defined in bootstrap.sh) with value 'python'
     - ./b2 -d0 stage threading=multi link=shared
     - sudo ./b2 install threading=multi link=shared
