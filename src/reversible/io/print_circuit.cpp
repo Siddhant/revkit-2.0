@@ -142,10 +142,10 @@ namespace revkit
       unsigned pos = 0u;
       for ( const auto& lc : line_chars.at( i ) | indexed( 0u ) )
       {
-        add_line_char( pos, std::get<0>( lc ) );
+        add_line_char( pos, std::get<0>( lc.value() ) );
         for ( unsigned k = 0u; k < settings.gate_spacing; ++k ) line_str += settings.line_char;
-        line_str += std::get<1>( lc );
-        pos = std::get<0>( lc ) + 1u;
+        line_str += std::get<1>( lc.value() );
+        pos = std::get<0>( lc.value() ) + 1u;
       }
       add_line_char( pos, circ.num_gates() );
       for ( unsigned k = 0u; k < settings.gate_spacing; ++k ) line_str += settings.line_char;
