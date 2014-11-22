@@ -92,7 +92,8 @@ namespace revkit
      *
      * @since  1.0
      */
-    virtual void draw_input( std::ostream& os, float x, float y, const std::string& text, bool is_constant ) const = 0;
+    virtual void draw_input( std::ostream& os, float x, float y, const std::string& text,
+            boost::optional<bool> is_constant ) const = 0;
 
     /**
      * @brief Draws an output name
